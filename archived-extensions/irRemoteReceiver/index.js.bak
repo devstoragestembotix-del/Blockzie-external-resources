@@ -1,0 +1,23 @@
+const irRemoteReceiver = formatMessage => ({
+    name: formatMessage({
+        id: 'irRemoteReceiver.name',
+        default: 'IR Remote Receiver'
+    }),
+    extensionId: 'irRemoteReceiver',
+    supportDevice: ['arduinoUno', 'arduinoNano', 'arduinoMini', 'arduinoLeonardo',
+        'arduinoMega2560', 'arduinoEsp32', 'arduinoEsp8266','intermediateKit','iotAiKit','arduinoNano_arduinoUno'],
+    iconURL: `asset/irRemoteReceiver.png`,
+    description: formatMessage({
+        id: 'irRemoteReceiver.description',
+        default: 'Receiving and decoding data in infrared carrier.'
+    }),
+    featured: true,
+    blocks: 'blocks.js',
+    generator: 'generator.js',
+    toolbox: 'toolbox.js',
+    msg: 'msg.js',
+    library: 'lib',
+    tags: ['communication'],
+});
+
+module.exports = irRemoteReceiver;

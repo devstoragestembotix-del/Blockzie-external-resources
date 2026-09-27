@@ -1,0 +1,23 @@
+const sharpIR = formatMessage => ({
+    name: formatMessage({
+        id: 'sharpIR.name',
+        default: 'Sharp IR Sensor'
+    }),
+    extensionId: 'sharpIR',
+    supportDevice: ['arduinoUno', 'arduinoNano', 'arduinoMini', 'arduinoLeonardo',
+        'arduinoMega2560', 'arduinoEsp8266', 'arduinoEsp32', 'intermediateKit', 'iotAiKit', 'arduinoNano_arduinoUno'],
+    iconURL: `asset/sharpIR.png`,
+    description: formatMessage({
+        id: 'sharpIR.description',
+        default: 'Infrared distance sensor based on the principle of triangle ranging.'
+    }),
+    featured: true,
+    blocks: 'blocks.js',
+    generator: 'generator.js',
+    toolbox: 'toolbox.js',
+    msg: 'msg.js',
+    library: 'lib',
+    tags: ['sensor'],
+});
+
+module.exports = sharpIR;
