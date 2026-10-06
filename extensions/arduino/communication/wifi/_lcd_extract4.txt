@@ -1,0 +1,22 @@
+=== async lcd_init( ===
+async lcd_init(args) {
+            const addr = this._parseHexAddress(args && args.ADDR ? args.ADDR : '0x27');
+            this._lcdNo = 1;
+            const t = this._getTransport();
+            this._bleLog('LCD-init', `address 0x${addr.toString(16)} (${addr})`, {
+                useBluetooth: t.ble,
+                useSerial: t.serial,
+                hint: t.serial ? 'USB on → Serial path, not BT' : (t.ble ? 'Bluetooth path' : 'Connect BT or USB')
+            });
+            await this.lcdConfigI2C({ NO: '1', ADDR: String(addr), CHIP: '1602' });
+            if (t.ble && !this._lcdBleReady && addr !== 63) {
+                this._bleLog('LCD-init', 'Retry with I2C address 0x3F (63)');
+                await this.lcdConfigI2C({ NO: '1', ADDR: '63', CHIP: '1602' });
+            }
+            if (t.ble && !this._lcdBleReady) {
+                this._bleLog('LCD-Fail', 'LCD not ready over BLE — unplug USB, check SDA21/SCL22, try 0x3F', { addr });
+            }
+        }
+
+        async lcd_
+
